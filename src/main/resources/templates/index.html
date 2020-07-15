@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Region</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center"> <h1>Region CRUD</h1>
+            
+            <br>
+            <form th:action="@{/save}" th:object="${region}" method="POST">
+                <label>Region Id</label>
+                <input type="text" id="textId" class="form-control" th:field="*{id}"><br><br>
+                <label>Region Name</label>
+                <input type="text" id="textName" class="form-control" th:field="*{name}">
+                <input type="submit" value="Save">
+            </form>
+            <br>
+            <br>
+            
+            <!--get All-->
+           
+            <table>
+                <tr>    
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+                <tr th:each="as : ${regions}">
+                    <td th:text = "${no}"></td>    
+                    <td th:text = "${as.name}"></td>
+                    <td>
+                        <a th:href="@{id {id=${as.id}}}">get</a>
+                        <a th:href="@{/delete/{id} {id=${as.id}}}">delete</a>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+    </body>
+</html>
