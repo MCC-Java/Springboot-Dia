@@ -32,11 +32,11 @@ and open the template in the editor.
                     <th>Name</th>
                 </tr>
                 <tr th:each="as : ${regions}">
-                    <td th:text = "${no}"></td>    
+                    <td th:text = "${as.id}"></td>    
                     <td th:text = "${as.name}"></td>
                     <td>
-                        <a th:href="@{id {id=${as.id}}}">get</a>
-                        <a th:href="@{/delete/{id} {id=${as.id}}}">delete</a>
+                        <a th:href="@{${as.id}}">get</a>
+                        <a th:href="@{/delete/{id} (id=${as.id})}">delete</a>
                     </td>
                 </tr>
             </table>

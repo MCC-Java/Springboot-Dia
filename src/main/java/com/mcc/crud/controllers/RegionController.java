@@ -39,13 +39,15 @@ public class RegionController {
     
     @GetMapping("/delete/{id}")
     public String delete (Model model, @PathVariable("id") String id){
-        regionService.delete(Integer.parseInt(id));
+        int Id = Integer.parseInt(id);
+        regionService.delete(Id);
         return "redirect:/";
     }
     
     @GetMapping("{id}")
     public String getById(Model model, @PathVariable("id") String id){
-        model.addAttribute("region", regionService.getById(Integer.parseInt(id)));
+        int Id = Integer.parseInt(id);
+        model.addAttribute("region", regionService.getById(Id));
         model.addAttribute("regions", regionService.getAll());
         return "index";
     }
